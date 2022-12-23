@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Books Library</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<form action="#" th:action="@{/createBook}" th:object="${book}"
+      method="post">
+    <fieldset>
+        <input type="submit" id="submitButton" th:value="Save">
+        <table>
+            <thead>
+            <tr>
+                <th>Isbn</th>
+                <th>Title</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <input type="hidden" th:field="*{id}" />
+                <td><input th:field="*{isbn}" /></td>
+                <td><input th:field="*{title}" /></td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Books Library </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Id </th>
+        <th> Isbn </th>
+        <th> Title </th>
+        <th>Loans</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${books.empty}">
+        <td colspan="2"> No Books Available </td>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td><span th:text="${book.id}"> Id </span></td>
+        <td><span th:text="${book.isbn}"> Isbn </span></td>
+        <td><span th:text="${book.title}"> Title </span></td>
+        <td><span th:text="${book.loan}"></span></td>
+        <td >
+            <a th:href="@{/showUpdateForm(bookId=${book.id})}" class="btn btn-info">Update</a>
+            <a th:href="@{/deleteBookButton(bookId=${book.id})}" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
